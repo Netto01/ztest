@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Correção Zulliger</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- 🔷 Apresentação do Sistema -->
+<section class="apresentacao">
+    <div class="apresentacao-introducao">
+      <p>💡 <strong>Apresentação:</strong><br>
+        O sistema de correção informatizada da Técnica de Zulliger, para aplicação coletiva e individual, foi desenvolvido pelo psicólogo Arlindo Gonçalves de Araújo Neto (CRP 23/003158) com o objetivo de simplificar e agilizar o processo de correção do teste. A ferramenta minimiza possíveis erros de interpretação, otimiza o tempo dos profissionais e gera uma sugestão de síntese detalhada que inclui a interpretação de cada variável, além de possíveis combinações entre elas.
+      </p>
+    </div>
+  
+    <div class="apresentacao-responsabilidade">
+      <p>🔐 <strong>Privacidade e responsabilidade:</strong><br>
+        Todos os dados inseridos na planilha são de responsabilidade exclusiva do profissional que a utiliza. O criador deste sistema não tem acesso a quaisquer informações inseridas ou salvas pelos usuários.
+      </p>
+    </div>
+  
+    <div class="apresentacao-funcao">
+      <p>🛠️ <strong>Função do sistema:</strong><br>
+        O sistema é uma ferramenta automatizada que auxilia no levantamento do teste Zulliger, seguindo as diretrizes dos manuais da editora. Importante: ele não é um teste psicológico e não gera laudos — apenas um relatório sugestivo, que deve ser analisado pelo profissional responsável.
+      </p>
+    </div>
+  
+    <div class="apresentacao-legal">
+      <p>⚖️ <strong>Aspectos legais:</strong><br>
+        Por não se caracterizar como um teste psicológico, o aplicativo não se enquadra na <strong>RESOLUÇÃO Nº 31, DE 15 DE DEZEMBRO DE 2022</strong>. Também não comercializamos formulários nem o manual do teste, que são de propriedade intelectual da <strong>Editora</strong>.
+      </p>
+    </div>
+  </section> 
+
+  <!-- 🔷 Cabeçalho -->
+  <h2>Dados do Examinado</h2>
+  <table class="dados-examinado">
+    <tr>
+      <td><label for="nome">Nome:</label></td>
+      <td colspan="3"><input type="text" id="nome" class="full-input" /></td>
+    </tr>
+    <tr>
+      <td><label for="sexo">Sexo:</label></td>
+      <td>
+        <select id="sexo">
+          <option value="">Selecione</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+        </select>
+      </td>
+      <td><label for="idade">Idade:</label></td>
+      <td><input type="number" id="idade" /></td>
+    </tr>
+    <tr>
+      <td><label for="escolaridade">Escolaridade:</label></td>
+      <td>
+        <select id="escolaridade">
+          <option value="">Selecione</option>
+          <option>Ens. Fundamental</option>
+          <option>Ens. Médio</option>
+          <option>Ens. Superior</option>
+        </select>
+      </td>
+      <td><label for="atividade">Atividade Profissional:</label></td>
+      <td>
+        <select id="atividade">
+          <option value="">Selecione</option>
+          <option>Sem Especialidade</option>
+          <option>Especialidade Nível Médio</option>
+          <option>Especialidade de Nível Superior</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td><label for="tabela">Tabela Consultada:</label></td>
+      <td>
+        <select id="tabela">
+          <option value="">Selecione</option>
+          <option>Sexo</option>
+          <option>Escolaridade</option>
+          <option>Atividade Profissional</option>
+        </select>
+      </td>
+      <td><label for="aplicacao">Tipo de Aplicação:</label></td>
+      <td>
+        <select id="aplicacao">
+          <option value="">Selecione</option>
+          <option>Individual</option>
+          <option>Coletiva</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+<!-- 🔶 Total de Respostas -->
+<h2>Total de Respostas (R)</h2>
+<table class="tabela-totalR">
+  <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+  <tr>
+    <td>Prancha I</td>
+    <td><input type="number" id="pb1" min="0" /></td>
+  </tr>
+  <tr>
+    <td>Prancha II</td>
+    <td><input type="number" id="pb2" min="0" /></td>
+  </tr>
+  <tr>
+    <td>Prancha III</td>
+    <td><input type="number" id="pb3" min="0" /></td>
+  </tr>
+  <tr>
+    <td>Rejeição de imagem</td>
+    <td><input type="number" id="rejeicao" min="0" /></td>
+  </tr>
+  <tr>
+    <td><strong>Total R</strong></td>
+    <td><span id="totalR">0</span></td>
+  </tr>
+  <tr>
+    <td colspan="2">
+      <div class="linha-inferior">
+        <span><strong>Tabela:</strong> 13</span>
+        <span><strong>Classificação:</strong> <span id="classificacao">⚠️ Preencha os três campos da primeira linha para ver a classificação.</span></span>
+      </div>
+    </td>
+  </tr>
+</table>
+
+
+ <!-- 🔷 Seção: Localizações -->
+<h2>Localizações</h2>
+
+<!-- 🟦 Tabela Grupo G -->
+<table class="tabela-localizacao-g">
+  <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+  <tr><td>Global (G)</td><td><input type="number" id="g" /></td></tr>
+  <tr><td>Global Cortada (Gcort)</td><td><input type="number" id="gcort" /></td></tr>
+  <tr><td>Global iniciada por detalhe (DG)</td><td><input type="number" id="dg" /></td></tr>
+  <tr><td><strong>Somatório G</strong></td><td><span id="somaG">0</span></td></tr>
+  <tr><td colspan="2"><strong>Tabela Consultada:</strong> 27</td></tr>
+  <tr><td colspan="2"><strong>Classificação:</strong> <span id="classificacaoG">(classificação aparecerá aqui)</span></td></tr>
+</table>
+
+<!-- 🟩 Tabela Detalhe Comum (D) -->
+<table class="tabela-localizacao-g">
+  <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+  <tr><td>Detalhe Comum (D)</td><td><input type="number" id="d" /></td></tr>
+  <tr><td colspan="2"><strong>Tabela Consultada:</strong> 28</td></tr>
+  <tr><td colspan="2"><strong>Classificação:</strong> <span id="classificacaoD">(classificação aparecerá aqui)</span></td></tr>
+</table>
+
+<!-- 🟥 Tabela Grupo Dd -->
+<table class="tabela-localizacao-g">
+  <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+  <tr><td>Detalhe Incomum (Dd)</td><td><input type="number" id="dd" /></td></tr>
+  <tr><td>Detalhe raro (dr)</td><td><input type="number" id="dr" /></td></tr>
+  <tr><td>Detalhe diminuto (dd)</td><td><input type="number" id="ddim" /></td></tr>
+  <tr><td>Detalhe externo (de)</td><td><input type="number" id="de" /></td></tr>
+  <tr><td>Detalhe inibitório (DO)</td><td><input type="number" id="do" /></td></tr>
+  <tr><td><strong>Somatório Dd</strong></td><td><span id="somaDd">0</span></td></tr>
+  <tr><td colspan="2"><strong>Tabela Consultada:</strong> 29</td></tr>
+  <tr><td colspan="2"><strong>Classificação:</strong> <span id="classificacaoDd">(classificação aparecerá aqui)</span></td></tr>
+</table>
+
+<!-- ⬜ Tabela Espaço em Branco (S) -->
+<table class="tabela-localizacao-g">
+  <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+  <tr><td>Espaço em Branco (S)</td><td><input type="number" id="s" /></td></tr>
+</table>
+
+<!-- 🔘 Subtabela de Espaço em Branco (S) Detalhada -->
+<table class="tabela-s-sub">
+    <caption>Detalhamento do Espaço em Branco (S)</caption>
+    <tr>
+      <th>GS</th>
+      <th>SG</th>
+      <th>DGS</th>
+      <th>SDG</th>
+      <th>GcortS</th>
+      <th>SGcort</th>
+      <th>DS</th>
+      <th>SD</th>
+      <th>ddS</th>
+      <th>Sdd</th>
+      <th>drS</th>
+      <th>SDd</th>
+      <th>sdr</th>
+      <th>deS</th>
+      <th>Sde</th>
+      <th>DOS</th>
+      <th>SDO</th>
+    </tr>
+    <tr>
+      <td><input type="number" id="gs" /></td>
+      <td><input type="number" id="sg" /></td>
+      <td><input type="number" id="dgs" /></td>
+      <td><input type="number" id="sdg" /></td>
+      <td><input type="number" id="gcorts" /></td>
+      <td><input type="number" id="sgcort" /></td>
+      <td><input type="number" id="ds" /></td>
+      <td><input type="number" id="sd" /></td>
+      <td><input type="number" id="dds" /></td>
+      <td><input type="number" id="sdd" /></td>
+      <td><input type="number" id="drs" /></td>
+      <td><input type="number" id="sdd2" /></td>
+      <td><input type="number" id="sdr" /></td>
+      <td><input type="number" id="des" /></td>
+      <td><input type="number" id="sde" /></td>
+      <td><input type="number" id="dos" /></td>
+      <td><input type="number" id="sdo" /></td>
+    </tr>
+  </table>
+  
+  <!-- 🔶 Seção: Determinantes -->
+<h2>Determinantes</h2>
+
+<!-- 🟦 Tabela: Forma precisa (F+) -->
+<table class="tabela-determinante">
+  <tr>
+    <th>Variável</th>
+    <th>Pontos Brutos</th>
+  </tr>
+  <tr>
+    <td> Forma precisa (F+)</td>
+    <td><input type="number" id="fMais" /></td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Tabela Consultada:</strong> 15</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFMais">(classificação aparecerá aqui)</span></td>
+  </tr>
+</table>
+
+<!-- 🟨 Tabela: Formas Imprecisa e Duvidosa -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Forma Imprecisa (F-)</td>
+      <td><input type="number" id="fMenos" /></td>
+    </tr>
+    <tr>
+      <td>Forma Duvidosa (F+)/-</td>
+      <td><input type="number" id="fDuvidosa" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório F</strong></td>
+      <td><span id="somaF">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 14</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoF">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+<!-- 🟩 Tabela: Movimento Humano -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Movimento Humano de boa qualidade (M+)</td>
+      <td><input type="number" id="mMais" /></td>
+    </tr>
+    <tr>
+      <td>Movimento Humano de qualidade não adequada (M-)</td>
+      <td><input type="number" id="mMenos" /></td>
+    </tr>
+    <tr>
+      <td>Movimento Humano duvidoso (M+/-)</td>
+      <td><input type="number" id="mDuvidoso" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório M</strong></td>
+      <td><span id="somaM">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 16</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoM">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+<!-- 🟦 Tabela: Movimento Animal -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Movimento animal (FM)</td>
+      <td><input type="number" id="fm" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 17</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFM">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+  <!-- 🟩 Tabela: Movimento Inanimado -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Movimento inanimado (Fm)</td>
+      <td><input type="number" id="fmMinusculo" /></td>
+    </tr>
+    <tr>
+      <td>mF</td>
+      <td><input type="number" id="mf" /></td>
+    </tr>
+    <tr>
+      <td>m</td>
+      <td><input type="number" id="m" /></td>
+    </tr>
+  </table>
+
+  <!-- 🟦 Tabela: Conteúdo visto em Perspectiva -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Conteúdo visto em Perspectiva (FK)</td>
+      <td><input type="number" id="fk" /></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 20</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFK">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+ <!-- 🟪 Tabela: K + KF -->
+<table class="tabela-determinante">
+  <tr>
+    <th>Variável</th>
+    <th>Pontos Brutos</th>
+  </tr>
+  <tr>
+    <td>K</td>
+    <td><input type="number" id="kk" /></td>
+  </tr>
+  <tr>
+    <td>KF</td>
+    <td><input type="number" id="kf" /></td>
+  </tr>
+  <tr>
+    <td><strong>Total K+KF</strong></td>
+    <td><span id="somaKKF">0</span></td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Tabela Consultada:</strong> 21</td>
+  </tr>
+  <tr>
+    <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoKKF">(classificação aparecerá aqui)</span></td>
+  </tr>
+</table>
+
+  
+  <!-- 🟫 Tabela: Sombreado Radiológico -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Sombreado radiológico (Fk)</td>
+      <td><input type="number" id="fkMinusculo" /></td>
+    </tr>
+    <tr>
+      <td>kF</td>
+      <td><input type="number" id="kfMaiusculo" /></td>
+    </tr>
+    <tr>
+      <td>k</td>
+      <td><input type="number" id="kMinusculo" /></td>
+    </tr>
+  </table>
+  
+  <!-- 🟪 Tabela: Sombrado Textura -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Sombrado Textura (Fc)</td>
+      <td><input type="number" id="fc" /></td>
+    </tr>
+    <tr>
+      <td>cF</td>
+      <td><input type="number" id="cf" /></td>
+    </tr>
+    <tr>
+      <td>c</td>
+      <td><input type="number" id="c" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório Fc</strong></td>
+      <td><span id="somaFc">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 23</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFc">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+
+  <!-- 🟫 Tabela: Cor Acromática -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Cor acromática (FC’)</td>
+      <td><input type="number" id="fcLinha" /></td>
+    </tr>
+    <tr>
+      <td>C’F</td>
+      <td><input type="number" id="cLinhaF" /></td>
+    </tr>
+    <tr>
+      <td>C’</td>
+      <td><input type="number" id="cLinha" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório FC’</strong></td>
+      <td><span id="somaFCLinha">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 22</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFCLinha">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+  <!-- 🟥 Tabela: Cor Cromática -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Cor cromática (FC)</td>
+      <td><input type="number" id="FC" /></td>
+    </tr>
+    <tr>
+      <td>Cor forçada (F-C)</td>
+      <td><input type="number" id="fMenosC" /></td>
+    </tr>
+    <tr>
+      <td>Cor arbitrária (F/C)</td>
+      <td><input type="number" id="fBarraC" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório FC</strong></td>
+      <td><span id="somaFC">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 18</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoFC">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+  <!-- 🟨 Tabela: Cor e Forma -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Cor e forma (CF)</td>
+      <td><input type="number" id="CF" /></td>
+    </tr>
+    <tr>
+      <td>Cor forçada (C-F)</td>
+      <td><input type="number" id="cMenosF" /></td>
+    </tr>
+    <tr>
+      <td>Cor arbitrária (C/F)</td>
+      <td><input type="number" id="cBarraF" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório CF</strong></td>
+      <td><span id="somaCF">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 19</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoCF">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+  
+  <!-- 🟧 Tabela: Cor Pura -->
+<table class="tabela-determinante">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Cor pura (C)</td>
+      <td><input type="number" id="C" /></td>
+    </tr>
+    <tr>
+      <td>Cor simbólica (Csimb)</td>
+      <td><input type="number" id="csimb" /></td>
+    </tr>
+    <tr>
+      <td>Cor descrita (Cdesc)</td>
+      <td><input type="number" id="cdesc" /></td>
+    </tr>
+    <tr>
+      <td>Cor nomeada (Cn)</td>
+      <td><input type="number" id="cn" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório C</strong></td>
+      <td><span id="somaC">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 24</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoC">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+
+  <!-- 🔷 Seção: Conteúdos -->
+<h2>Conteúdos</h2>
+  
+  <!-- 🔷 Tabela: Conteúdos - Humano -->
+<table class="tabela-conteudo">
+    <tr>
+      <th>Variável</th>
+      <th>Pontos Brutos</th>
+    </tr>
+    <tr>
+      <td>Humano (H)</td>
+      <td><input type="number" id="h" /></td>
+    </tr>
+    <tr>
+      <td>Detalhe Humano (HD)</td>
+      <td><input type="number" id="hd" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório Humano (H + HD)</strong></td>
+      <td><span id="somaH">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 25</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoH">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+
+<!-- 👤 Tabela: Humano Descaracterizado -->
+<table class="tabela-conteudo">
+    <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+    <tr><td>Humano descaracterizado (H)</td><td><input type="number" id="hDescaracterizado" /></td></tr>
+    <tr><td>Detalhe humano descaracterizado (HD)</td><td><input type="number" id="hdDescaracterizado" /></td></tr>
+  </table>
+  
+  <!-- 🐾 Tabela: Animal -->
+<table class="tabela-conteudo">
+    <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+    <tr>
+      <td>Animal (A)</td>
+      <td><input type="number" id="a" /></td>
+    </tr>
+    <tr>
+      <td>Detalhe animal (AD)</td>
+      <td><input type="number" id="ad" /></td>
+    </tr>
+    <tr>
+      <td><strong>Somatório A + AD</strong></td>
+      <td><span id="somaAnimal">0</span></td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Tabela Consultada:</strong> 26</td>
+    </tr>
+    <tr>
+      <td colspan="2"><strong>Classificação:</strong> <span id="classificacaoAnimal">(classificação aparecerá aqui)</span></td>
+    </tr>
+  </table>
+
+  <!-- 🐾 Tabela: Animal Descaracterizado -->
+<table class="tabela-conteudo">
+    <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+    <tr>
+      <td>Animal descaracterizado (A)</td>
+      <td><input type="number" id="aDesc" /></td>
+    </tr>
+    <tr>
+      <td>Detalhe animal descaracterizado (AD)</td>
+      <td><input type="number" id="adDesc" /></td>
+    </tr>
+  </table>
+
+  <!-- 🌿 Tabela: Planta, Objeto e Outros Conteúdos -->
+<table class="tabela-conteudo">
+    <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+    <tr>
+      <td>Planta (PL)</td>
+      <td><input type="number" id="pl" /></td>
+    </tr>
+    <tr>
+      <td>Objeto (OBJ)</td>
+      <td><input type="number" id="obj" /></td>
+    </tr>
+    <tr>
+      <td>Outros Conteúdos</td>
+      <td><input type="number" id="outros" /></td>
+    </tr>
+  </table>
+  
+  <!-- 🌋 Tabela: Anatômico, Elementos Naturais e Geográficos -->
+<table class="tabela-conteudo">
+    <tr><th>Variável</th><th>Pontos Brutos</th></tr>
+    <tr>
+      <td>Anatômico (At)</td>
+      <td><input type="number" id="at" /></td>
+    </tr>
+    <tr>
+      <td>Água</td>
+      <td><input type="number" id="agua" /></td>
+    </tr>
+    <tr>
+      <td>Fogo</td>
+      <td><input type="number" id="fogo" /></td>
+    </tr>
+    <tr>
+      <td>Nuvens (Nuv)</td>
+      <td><input type="number" id="nuv" /></td>
+    </tr>
+    <tr>
+      <td>Natureza (Nat)</td>
+      <td><input type="number" id="nat" /></td>
+    </tr>
+    <tr>
+      <td>Geográficos (Geo)</td>
+      <td><input type="number" id="geo" /></td>
+    </tr>
+  </table>
+
+  <!-- 🎭 Seção: Fenômenos Especiais -->
+<h2>Fenômenos Especiais</h2>
+<table class="tabela-fenomenos">
+  <tr>
+    <th>Fenômeno</th>
+    <th>Marcar</th>
+  </tr>
+  <tr><td>Choque acromático</td><td><input type="checkbox" id="choqueAcromatico" /></td></tr>
+  <tr><td>Choque cromático</td><td><input type="checkbox" id="choqueCromatico" /></td></tr>
+  <tr><td>Choque de exclamação</td><td><input type="checkbox" id="choqueExclamacao" /></td></tr>
+  <tr><td>Confabulação</td><td><input type="checkbox" id="confabulacao" /></td></tr>
+  <tr><td>Contaminação</td><td><input type="checkbox" id="contaminacao" /></td></tr>
+  <tr><td>Crítica a técnica</td><td><input type="checkbox" id="criticaTecnica" /></td></tr>
+  <tr><td>Ideia de autorreferência</td><td><input type="checkbox" id="ideiaAutorreferencia" /></td></tr>
+  <tr><td>Ideia de referência</td><td><input type="checkbox" id="ideiaReferencia" /></td></tr>
+  <tr><td>Linguajar requintado</td><td><input type="checkbox" id="linguajarRequintado" /></td></tr>
+  <tr><td>Mutilação</td><td><input type="checkbox" id="mutilacao" /></td></tr>
+  <tr><td>Sentimento de incapacidade</td><td><input type="checkbox" id="sentimentoIncapacidade" /></td></tr>
+  <tr><td>Choque ao vazio</td><td><input type="checkbox" id="choqueVazio" /></td></tr>
+  <tr><td>Choque ao branco</td><td><input type="checkbox" id="choqueBranco" /></td></tr>
+</table>
+
+<!-- 📊 Seção: Respostas Populares -->
+<h2>Respostas Populares (P)</h2>
+<table class="tabela-populares">
+  <tr>
+    <th>Variável</th>
+    <th>Pontos Brutos</th>
+  </tr>
+  <tr>
+    <td>Respostas Populares (P)</td>
+    <td><input type="number" id="respostasPopulares" /></td>
+  </tr>
+</table>
+
+ <!-- Ótimo lugar para o botão -->
+ <div style="margin-top: 40px;">
+  <button id="gerarRelatorio">📄 Gerar Relatório</button>
+  <div id="relatorio" style="margin-top: 05px;"></div>
+  <canvas id="graficoRelatorio" style="margin-top: 05px; max-width: 10px;"></canvas>
+</div>
+
+  
+  <!-- 🔻 Scripts -->
+  <script src="js/totalRespostas.js"></script>
+  <script src="js/G.js"></script>
+  <script src="js/D.js"></script>
+  <script src="js/Dd.js"></script>
+  <script src="js/F+.js"></script>
+  <script src="js/SomatórioF.js"></script>
+  <script src="js/SomatórioM.js"></script>
+  <script src="js/FM.js"></script>
+  <script src="js/FK.js"></script>
+  <script src="js/K+KF.js"></script>
+  <script src="js/Fc.js"></script>
+  <script src="js/Fc'.js"></script>
+  <script src="FC.js"></script>
+  <script src="js/CF.js"></script>
+  <script src="js/C.js"></script>
+  <script src="js/hhd.js"></script>
+  <script src="js/aad.js"></script>
+
+</body>
+</html>

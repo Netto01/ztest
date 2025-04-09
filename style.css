@@ -1,0 +1,200 @@
+/* === ESTILO GLOBAL === */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f5f5f5;
+  }
+  
+  h2 {
+    padding: 10px;
+    border-radius: 8px;
+    color: white;
+    margin-top: 30px;
+  }
+
+/* 🔷 Apresentação Geral */
+.apresentacao {
+    background-color: #f9fbfc;
+    padding: 30px 20px;
+    border-radius: 12px;
+    margin-bottom: 40px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 16px;
+    color: #1a1a1a;
+    line-height: 1.7;
+  }
+  
+  /* Estilo base dos parágrafos */
+  .apresentacao p {
+    max-width: 850px;
+    margin: 0 auto 20px;
+    text-align: justify;
+    padding: 15px 20px;
+    border-left: 5px solid #90caf9;
+    background-color: #ffffff;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+  }
+  
+  /* Introdução */
+  .apresentacao-introducao p {
+    border-color: #42a5f5;
+  }
+  
+  /* Responsabilidade */
+  .apresentacao-responsabilidade p {
+    background-color: #e3f2fd;
+    border-color: #1e88e5;
+    font-style: italic;
+    color: #37474f;
+  }
+  
+  /* Função */
+  .apresentacao-funcao p {
+    background-color: #e8f5e9;
+    border-color: #43a047;
+    color: #2e7d32;
+  }
+  
+  /* Legalidade */
+  .apresentacao-legal p {
+    background-color: #fff8e1;
+    border-color: #fbc02d;
+    color: #5d4037;
+  }
+  
+  /* Negrito leve */
+  .apresentacao strong {
+    font-weight: 600;
+  }
+  
+  
+  
+  
+  /* === CORES DAS SEÇÕES (h2) === */
+  h2:nth-of-type(1) { background-color: #1976d2; } /* Dados do Examinado */
+  h2:nth-of-type(2) { background-color: #f57c00; } /* Total de Respostas */
+  h2:nth-of-type(3) { background-color: #388e3c; } /* Localizações */
+  h2:nth-of-type(4) { background-color: #7b1fa2; } /* Determinantes */
+  h2:nth-of-type(5) { background-color: #c2185b; } /* Conteúdos */
+  h2:nth-of-type(6) { background-color: #455a64; } /* Fenômenos Especiais */
+  h2:nth-of-type(7) { background-color: #0288d1; } /* Respostas Populares */
+  
+  /* === TABELAS === */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    margin-bottom: 30px;
+    background-color: white;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+    border-radius: 6px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+  }
+  
+  th {
+    font-weight: bold;
+    text-align: left;
+    color: white;
+  }
+  
+  /* === TABELAS COM CORES CORRESPONDENTES === */
+  
+  /* 🔷 Dados do Examinado */
+  .dados-examinado th {
+    background-color: #1976d2;
+  }
+  
+  /* 🔶 Total de Respostas */
+  .tabela-totalR th {
+    background-color: #f57c00;
+  }
+  
+  /* 🟦 Localizações */
+  .tabela-localizacao-g th {
+    background-color: #388e3c;
+  }
+  .tabela-s-sub caption {
+    background-color: #388e3c;
+    color: white;
+  }
+  .tabela-s-sub th {
+    background-color: #388e3c;
+    color: white;
+  }
+  
+  /* 🟩 Determinantes */
+  .tabela-determinante th {
+    background-color: #7b1fa2;
+  }
+  .tabela-determinante caption {
+    background-color: #7b1fa2;
+    color: white;
+  }
+  
+  /* 🟥 Conteúdos */
+  .tabela-conteudo th {
+    background-color: #c2185b;
+  }
+  .tabela-conteudo caption {
+    background-color: #c2185b;
+    color: white;
+  }
+  
+  /* 🎭 Fenômenos Especiais */
+  .tabela-fenomenos th {
+    background-color: #455a64;
+    color: white;
+  }
+  
+  /* 📊 Respostas Populares */
+  .tabela-populares th {
+    background-color: #0288d1;
+    color: white;
+  }
+  
+  /* === INPUTS E SELECTS === */
+  input[type="text"],
+  input[type="number"],
+  select {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .full-input {
+    width: 100%;
+  }
+  
+  /* === OUTROS ELEMENTOS === */
+  caption {
+    font-weight: bold;
+    padding: 8px;
+  }
+  
+  .linha-inferior {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+    padding: 8px;
+    background-color: #f9f9f9;
+    border-top: 1px solid #ccc;
+  }
+  
+  span {
+    display: inline-block;
+    margin-top: 5px;
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.2);
+  }
+  
